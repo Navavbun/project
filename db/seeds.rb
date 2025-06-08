@@ -1,17 +1,17 @@
-users = 25.times.map do
+users = 250.times.map do
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.unique.email
   )
 end
 
-tags = 5.times.map do
+tags = 20.times.map do
   Tag.create!(
     name: Faker::Lorem.unique.word
   )
 end
 
-discussions = 10.times.map do
+discussions = 75.times.map do
   d = Discussion.create!(
     topic: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph(sentence_count: 2),
@@ -24,7 +24,7 @@ discussions = 10.times.map do
   d
 end
 
-20.times do
+400.times do
   Comment.create!(
     user: users.sample,
     discussion: discussions.sample,

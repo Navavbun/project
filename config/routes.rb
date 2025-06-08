@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :tags
-      resources :comments
-      resources :discussions
-      resources :users
+      get "discussions/search", to: "discussions#search"
+      resources :comments, except: [ :index ]
+      resources :discussions, only: [ :index, :show ]
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

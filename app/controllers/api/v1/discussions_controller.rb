@@ -1,55 +1,38 @@
 module Api
   module V1
     class DiscussionsController < ApplicationController
-  before_action :set_discussion, only: %i[ show update destroy ]
+      # GET /discussions
+      def index
+        @discussions = Discussion.all
 
-  # GET /discussions
-  def index
-    @discussions = Discussion.all
+        render json: @discussions
+      end
 
-    render json: @discussions
-  end
+      # GET /discussions/1
+      def show
+        @discussion = Discussion.find(params.expect(:id))
 
-  # GET /discussions/1
-  def show
-    render json: @discussion
-  end
+        render json: @discussion
+      end
 
-  # POST /discussions
-  def create
-    @discussion = Discussion.new(discussion_params)
+      # GET /discussions/search
+      def search
+        text = params[:text].to_s
+        @discussions = []
 
-    if @discussion.save
-      render json: @discussion, status: :created, location: @discussion
-    else
-      render json: @discussion.errors, status: :unprocessable_entity
-    end
-  end
+        if text.present?
+          @discussions = Discussion.all
+            .where(Discussion.arel_table[:topic].matches("%#{text}%"))
+            .or(
+              Discussion.where(Discussion.arel_table[:description].matches("%#{text}%"))
+            )
+        else
+          @discussions = Discussion.all
+        end
 
-  # PATCH/PUT /discussions/1
-  def update
-    if @discussion.update(discussion_params)
-      render json: @discussion
-    else
-      render json: @discussion.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /discussions/1
-  def destroy
-    @discussion.destroy!
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_discussion
-      @discussion = Discussion.find(params.expect(:id))
-    end
-
-    # Only allow a list of trusted parameters through.
-    def discussion_params
-      params.expect(discussion: [ :topic, :description, :tag_id ])
-    end
+        page = params[:page] || 1
+        render json: @discussions.page(page).per(@@per)
+      end
     end
   end
 end
