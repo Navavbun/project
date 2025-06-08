@@ -51,3 +51,5 @@ gem "faker", "~> 3.5"
 gem "kaminari", "~> 1.2"
 
 gem "active_model_serializers", "~> 0.10.15"
+
+gem "devise", "~> 4.9"
