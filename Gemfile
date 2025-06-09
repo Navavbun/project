@@ -51,13 +51,3 @@ gem "faker", "~> 3.5"
 gem "kaminari", "~> 1.2"
 
 gem "active_model_serializers", "~> 0.10.15"
-
-gem "devise", "~> 4.9"
-
-gem "devise-jwt", "~> 0.12.1"
-
-gem "rack-cors", "~> 3.0"
-
-gem "jsonapi_serializer", "~> 0.1.1"
-
-gem "multi_json", "~> 1.15"

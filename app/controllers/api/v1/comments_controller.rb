@@ -1,7 +1,6 @@
 module Api
   module V1
     class CommentsController < ApplicationController
-      before_action :authenticate_user!
       before_action :set_comment, only: %i[ show update destroy ]
 
       # GET /comments/1
@@ -42,7 +41,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def comment_params
-        params.expect(comment: [ :user_id, :text ])
+        params.expect(comment: [ :text ])
       end
     end
   end

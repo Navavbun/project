@@ -1,10 +1,3 @@
-users = 250.times.map do
-  User.create!(
-    name: Faker::Name.name,
-    email: Faker::Internet.unique.email
-  )
-end
-
 tags = 20.times.map do
   Tag.create!(
     name: Faker::Lorem.unique.word
@@ -26,7 +19,6 @@ end
 
 400.times do
   Comment.create!(
-    user: users.sample,
     discussion: discussions.sample,
     text: Faker::Lorem.sentence(word_count: 8)
   )
