@@ -24,3 +24,5 @@ discussions.each do |discussion|
     )
   end
 end
+
+Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

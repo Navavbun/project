@@ -1,6 +1,6 @@
 module Api
   module V1
-    class DiscussionsController < ApplicationController
+    class DiscussionsController < ApiController
       # GET /discussions
       def index
         text = params[:text].to_s
