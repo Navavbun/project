@@ -12,7 +12,12 @@ class DiscussionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create discussion" do
     assert_difference("Discussion.count") do
-      post discussions_url, params: { discussion: { description: @discussion.description, tag_id: @discussion.tag_id, topic: @discussion.topic } }, as: :json
+      post discussions_url,
+           params: { discussion: {
+             description: @discussion.description,
+             tag_id: @discussion.tag_id,
+             topic: @discussion.topic
+           } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +29,12 @@ class DiscussionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update discussion" do
-    patch discussion_url(@discussion), params: { discussion: { description: @discussion.description, tag_id: @discussion.tag_id, topic: @discussion.topic } }, as: :json
+    patch discussion_url(@discussion),
+          params: { discussion: {
+            description: @discussion.description,
+            tag_id: @discussion.tag_id,
+            topic: @discussion.topic
+          } }, as: :json
     assert_response :success
   end
 

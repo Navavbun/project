@@ -51,3 +51,11 @@ gem "faker", "~> 3.5"
 gem "kaminari", "~> 1.2"
 
 gem "active_model_serializers", "~> 0.10.15"
+
+gem "rubocop", "~> 1.76"
+
+gem "rubocop-rails", "~> 2.32"
+
+gem "rubocop-performance", "~> 1.25"
+
+gem "fasterer", "~> 0.11.0"

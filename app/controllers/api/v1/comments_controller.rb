@@ -1,7 +1,7 @@
 module Api
   module V1
     class CommentsController < ApplicationController
-      before_action :set_comment, only: %i[ update destroy ]
+      before_action :set_comment, only: %i[update destroy]
 
       # GET /comments/1
       def show
@@ -13,7 +13,7 @@ module Api
 
       # POST /comments
       def create
-        @comment = Comment.new(params.require(:comment).permit(:text, :discussion_id))
+        @comment = Comment.new(params.expect(comment: %i[text discussion_id]))
 
         if @comment.save
           render json: @comment, status: :created
@@ -24,7 +24,7 @@ module Api
 
       # PATCH/PUT /comments/1
       def update
-        if @comment.update(params.require(:comment).permit(:text))
+        if @comment.update(params.expect(comment: [:text]))
           render json: @comment
         else
           render json: @comment.errors, status: :unprocessable_entity
@@ -37,6 +37,7 @@ module Api
       end
 
       private
+
       # Use callbacks to share common setup or constraints between actions.
       def set_comment
         @comment = Comment.find(params.expect(:id))

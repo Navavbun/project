@@ -4,17 +4,8 @@ module Api
       # GET /discussions
       def index
         text = params[:text].to_s
-        @discussions = []
 
-        if text.present?
-          @discussions = Discussion.all
-            .where(Discussion.arel_table[:topic].matches("%#{text}%"))
-            .or(
-              Discussion.where(Discussion.arel_table[:description].matches("%#{text}%"))
-            )
-        else
-          @discussions = Discussion.all
-        end
+        @discussions = search(text)
 
         page = params[:page] || 1
         render json: @discussions.page(page).per(@@per)
@@ -27,6 +18,20 @@ module Api
         render json: @discussion, serializer: DetailedDiscussionSerializer,
                comments_page: params[:page] || 1,
                comments_per: @@per
+      end
+
+      private
+
+      def search(text)
+        if text.present?
+          Discussion
+            .where(Discussion.arel_table[:topic].matches("%#{text}%"))
+            .or(
+              Discussion.where(Discussion.arel_table[:description].matches("%#{text}%"))
+            )
+        else
+          Discussion.all
+        end
       end
     end
   end

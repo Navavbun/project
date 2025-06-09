@@ -12,7 +12,11 @@ class DiscussionTagsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create discussion_tag" do
     assert_difference("DiscussionTag.count") do
-      post discussion_tags_url, params: { discussion_tag: { discussion_id: @discussion_tag.discussion_id, tag_id: @discussion_tag.tag_id } }, as: :json
+      post discussion_tags_url,
+           params: { discussion_tag: {
+             discussion_id: @discussion_tag.discussion_id,
+             tag_id: @discussion_tag.tag_id
+           } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +28,11 @@ class DiscussionTagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update discussion_tag" do
-    patch discussion_tag_url(@discussion_tag), params: { discussion_tag: { discussion_id: @discussion_tag.discussion_id, tag_id: @discussion_tag.tag_id } }, as: :json
+    patch discussion_tag_url(@discussion_tag),
+          params: { discussion_tag: {
+            discussion_id: @discussion_tag.discussion_id,
+            tag_id: @discussion_tag.tag_id
+          } }, as: :json
     assert_response :success
   end
 

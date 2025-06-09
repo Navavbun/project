@@ -107,6 +107,8 @@ GEM
       tzinfo
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
+    fasterer (0.11.0)
+      ruby_parser (>= 3.19.1)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -280,7 +282,11 @@ GEM
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
+    ruby_parser (3.21.1)
+      racc (~> 1.5)
+      sexp_processor (~> 4.16)
     securerandom (0.4.1)
+    sexp_processor (4.17.3)
     solid_cable (3.0.8)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -351,10 +357,14 @@ DEPENDENCIES
   brakeman
   debug
   faker (~> 3.5)
+  fasterer (~> 0.11.0)
   kamal
   kaminari (~> 1.2)
   puma (>= 5.0)
   rails (~> 8.0.2)
+  rubocop (~> 1.76)
+  rubocop-performance (~> 1.25)
+  rubocop-rails (~> 2.32)
   rubocop-rails-omakase
   solid_cable
   solid_cache
