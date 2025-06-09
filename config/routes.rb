@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get "discussions/search", to: "discussions#search"
       resources :comments, except: [ :index ]
       resources :discussions, only: [ :index, :show ]
     end

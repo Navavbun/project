@@ -3,20 +3,6 @@ module Api
     class DiscussionsController < ApplicationController
       # GET /discussions
       def index
-        @discussions = Discussion.all
-
-        render json: @discussions
-      end
-
-      # GET /discussions/1
-      def show
-        @discussion = Discussion.find(params.expect(:id))
-
-        render json: @discussion
-      end
-
-      # GET /discussions/search
-      def search
         text = params[:text].to_s
         @discussions = []
 
@@ -32,6 +18,15 @@ module Api
 
         page = params[:page] || 1
         render json: @discussions.page(page).per(@@per)
+      end
+
+      # GET /discussions/1
+      def show
+        @discussion = Discussion.find(params.expect(:id))
+
+        render json: @discussion, serializer: DetailedDiscussionSerializer,
+               comments_page: params[:page] || 1,
+               comments_per: @@per
       end
     end
   end

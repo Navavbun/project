@@ -16,10 +16,11 @@ discussions = 75.times.map do
 
   d
 end
-
-400.times do
-  Comment.create!(
-    discussion: discussions.sample,
-    text: Faker::Lorem.sentence(word_count: 8)
-  )
+discussions.each do |discussion|
+  45.times do
+    Comment.create!(
+      discussion: discussion,
+      text: Faker::Lorem.sentence(word_count: 8)
+    )
+  end
 end
