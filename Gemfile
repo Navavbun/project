@@ -59,3 +59,7 @@ gem "rubocop-rails", "~> 2.32"
 gem "rubocop-performance", "~> 1.25"
 
 gem "fasterer", "~> 0.11.0"
+
+gem "rspec-rails", "~> 8.0"
+
+gem "rswag", "~> 2.16"
