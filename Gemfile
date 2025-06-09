@@ -44,22 +44,22 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-end
+  
+  gem "faker", "~> 3.5", require: false
 
-gem "faker", "~> 3.5"
+  gem "rubocop", "~> 1.76", require: false
+
+  gem "rubocop-rails", "~> 2.32", require: false
+
+  gem "rubocop-performance", "~> 1.25", require: false
+
+  gem "fasterer", "~> 0.11.0", require: false
+end
 
 gem "kaminari", "~> 1.2"
 
 gem "active_model_serializers", "~> 0.10.15"
 
-gem "rubocop", "~> 1.76"
-
-gem "rubocop-rails", "~> 2.32"
-
-gem "rubocop-performance", "~> 1.25"
-
-gem "fasterer", "~> 0.11.0"
-
 gem "rspec-rails", "~> 8.0"
-
 gem "rswag", "~> 2.16"
+gem "shoulda-matchers", "~> 6.5"

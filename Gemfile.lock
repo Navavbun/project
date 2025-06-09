@@ -326,6 +326,8 @@ GEM
       sexp_processor (~> 4.16)
     securerandom (0.4.1)
     sexp_processor (4.17.3)
+    shoulda-matchers (6.5.0)
+      activesupport (>= 5.2.0)
     solid_cable (3.0.8)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -407,6 +409,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.25)
   rubocop-rails (~> 2.32)
   rubocop-rails-omakase
+  shoulda-matchers (~> 6.5)
   solid_cable
   solid_cache
   solid_queue
